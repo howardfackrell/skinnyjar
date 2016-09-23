@@ -1,0 +1,15 @@
+{
+  "name": "skinnyjar",
+  "version": "1.0.0",
+  "description": "checks for skinny jars",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "node index.js"
+  },
+  "author": "howardfackrell",
+  "license": "ISC",
+  "dependencies": {
+    "restler": "^3.4.0"
+  }
+}
