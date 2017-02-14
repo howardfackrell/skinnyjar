@@ -4,12 +4,22 @@ var ANSI_RESET = "\u001B[0m";
 var ANSI_RED = "\u001B[31m";
 var ANSI_GREEN = "\u001B[32m";
 
-function check(jar, version, func_complete) {
+function check1(jar, version, func_complete) {
   restler.get(
     "https://artifactory.octanner.net/api/storage/oct-libs-releases-local/com/octanner/batchapplications/"
     + jar + "/" + version
     + "/" + jar + "-" + version + "-jar-with-dependencies.jar",
     { headers : {"X-JFrog-Art-Api" : process.env.ARTIFACTORY_API_KEY}})
+  .on('complete', func_complete);
+}
+
+function check(jar, version, func_complete) {
+  var auth = new Buffer(process.env.OCT_VAULT_SHARED_READ_ARTIFACTORY_USERNAME + ':' + process.env.OCT_VAULT_SHARED_READ_ARTIFACTORY_PASSWORD).toString('base64')
+  restler.get(
+    "https://artifactory.octanner.net/api/storage/oct-libs-releases-local/com/octanner/batchapplications/"
+    + jar + "/" + version
+    + "/" + jar + "-" + version + "-jar-with-dependencies.jar",
+    { headers : {"Authorization" : "Basic " + auth}})
   .on('complete', func_complete);
 }
 
