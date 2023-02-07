@@ -34,10 +34,10 @@ function handler(result) {
 
 
 var version = process.argv[2]
-var jars = ['awardimageprocessing', 'brochurejmsprocessing', 'recipientbrochureprocessing', 'sapupdate' ]
+var jars = ['awardimageprocessing', 'brochurejmsprocessing', 'recipientbrochureprocessing', 'sapupdate', 'cpq-comparison-report' ]
 
 jars.forEach(function(jar)  {
-  check(jar, version, handler);
+  check1(jar, version, handler);
 });
 
 
